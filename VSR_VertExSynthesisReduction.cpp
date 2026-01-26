@@ -10,8 +10,6 @@
  *   donde se puede desplazar trabajo a SPU/VU/compute shaders para plataformas
  *   específicas (PS3/PS2/GPU).
  * - Está pensado para ser seguro, modular y con puntos de extensión.
- *
- * Fecha: 2025
  */
 
 #include <algorithm>
@@ -448,4 +446,5 @@ int main(){
     // VUART/ATDC pipelines (e.g., generate indirect draw calls, attach LODs, etc.).
 
     return 0;
+
 }
