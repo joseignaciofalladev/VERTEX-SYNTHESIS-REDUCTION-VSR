@@ -30,8 +30,7 @@
 
 namespace tx::vsr {
 
-// ----------------------------- Basic types ---------------------------------
-
+// Basic types
 struct Vec3 {
     float x, y, z;
     Vec3() : x(0), y(0), z(0) {}
@@ -60,8 +59,7 @@ struct Mesh {
     size_t triangle_count() const { return indices.size() / 3; }
 };
 
-// -------------------------- Configuration / Policies -----------------------
-
+// Configuration / Policies
 struct VSRConfig {
     // Target reduction ratio (0.0 = no reduction, 1.0 = aggressive)
     float reduction_ratio = 0.75f;
@@ -94,8 +92,7 @@ inline float triangle_area(const Vec3& a, const Vec3& b, const Vec3& c) {
     return 0.5f * len(cross(b-a, c-a));
 }
 
-// -------------------------- Importance Estimator ---------------------------
-
+// Importance Estimator
 // Per-vertex importance score (0..1). High = keep high fidelity.
 // The estimator combines geometric saliency (curvature), screen-space influence
 // (approx via normal facing or custom weight), motion/velocity hints, and
@@ -164,8 +161,7 @@ private:
     }
 };
 
-// -------------------------- Synthetic Vertex Generator ---------------------
-
+// Synthetic Vertex Generator
 // The heart of VSR: given a mesh and importance field, synthesize a reduced mesh.
 // Approach (composite):
 // 1. Compute target vertex budget.
@@ -371,8 +367,7 @@ private:
     }
 };
 
-// -------------------------- VSR Manager (High-level) -----------------------
-
+// VSR Manager (High-level)
 class VSR {
 public:
     VSR(const VSRConfig& cfg) : cfg(cfg), estimator(cfg), synth(cfg) {}
@@ -398,8 +393,7 @@ private:
     VertexSynthesizer synth;
 };
 
-// ----------------------------- Example usage --------------------------------
-
+// Example usage
 // simple mesh generator (icosahedron-like) for demo purposes
 Mesh create_test_mesh_grid(int w, int h){
     Mesh m;
@@ -448,3 +442,4 @@ int main(){
     return 0;
 
 }
+
