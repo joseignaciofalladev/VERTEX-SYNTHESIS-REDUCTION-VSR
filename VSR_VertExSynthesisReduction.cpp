@@ -83,8 +83,7 @@ struct VSRConfig {
     uint32_t rng_seed = 0xC0FFEE;
 };
 
-// ------------------------------- Utilities ---------------------------------
-
+// Utilities
 static inline void clampf(float& v, float a=0.0f, float b=1.0f){ if(v<a) v=a; if(v>b) v=b; }
 
 // Simple triangle area
@@ -378,12 +377,10 @@ public:
 
         // optional: inject external hints (visibility / material importance)
         // ... (hook)
-
         Mesh reduced = synth.synthesize(src, imp);
 
         // optional: multi-pass refinement (morphing prototypes to match error budget)
         // ... (hook)
-
         return reduced;
     }
 
@@ -435,11 +432,7 @@ int main(){
     Mesh reduced = vsr.process(src);
 
     std::cout << "Reduced vertices: " << reduced.vertices.size() << " tris: " << reduced.triangle_count() << "\n";
-
     // Note: In a real engine you would now upload reduced mesh to GPU and integrate with
     // VUART/ATDC pipelines (e.g., generate indirect draw calls, attach LODs, etc.).
-
     return 0;
-
 }
-
