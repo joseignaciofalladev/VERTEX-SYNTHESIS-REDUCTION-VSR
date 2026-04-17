@@ -1,8 +1,7 @@
 /*
  * Tipo: code/cpp (único archivo con implementación y ejemplo de uso)
  * Propósito: Proveer una implementación de referencia, documentada y lista
- *            para integrar en un motor C++ como módulo de reducción adaptativa
- *            de vértices.
+ * para integrar en un motor C++ como módulo de reducción adaptativa de vértices.
  *
  * NOTAS:
  * - Este archivo es una referencia conceptual y contiene implementaciones
@@ -375,12 +374,9 @@ public:
     Mesh process(const Mesh& src) {
         ImportanceField imp = estimator.estimate(src);
 
-        // optional: inject external hints (visibility / material importance)
-        // ... (hook)
+        // optional: inject external hints (visibility / material importance) (hook)
         Mesh reduced = synth.synthesize(src, imp);
-
-        // optional: multi-pass refinement (morphing prototypes to match error budget)
-        // ... (hook)
+        // optional: multi-pass refinement (morphing prototypes to match error budget) (hook)
         return reduced;
     }
 
